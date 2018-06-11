@@ -2,6 +2,8 @@
 
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
@@ -29,6 +31,11 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler, {
     log: console.log()
 }));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use(cors());
 
 app.use('/api', api);
 

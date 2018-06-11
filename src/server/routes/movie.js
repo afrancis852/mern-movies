@@ -6,6 +6,6 @@ const movieCtrl = require('../controllers/movie');
 
 const api = express.Router();
 
-api.get('/searchMovie', movieCtrl.searchMovie);
+api.post('/searchMovie', movieCtrl.searchMovie);
 
 module.exports = api;
