@@ -8,6 +8,8 @@ const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpack = require('webpack');
 const webpackConfig = require('../../webpack.config');
 
+const api = require('./routes/movie');
+
 const app = express();
 
 const compiler = webpack(webpackConfig);
@@ -27,5 +29,7 @@ app.use(webpackDevMiddleware(compiler, {
 app.use(webpackHotMiddleware(compiler, {
     log: console.log()
 }));
+
+app.use('/api', api);
 
 module.exports = app;
